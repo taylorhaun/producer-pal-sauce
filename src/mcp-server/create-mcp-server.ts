@@ -26,6 +26,7 @@ import { toolDefReadTrack } from "#src/tools/track/read/read-track.def.ts";
 import { toolDefUpdateTrack } from "#src/tools/track/update/update-track.def.ts";
 import { toolDefConnect } from "#src/tools/workflow/connect.def.ts";
 import { toolDefContext } from "#src/tools/workflow/context.def.ts";
+import { toolDefStemSeparate } from "#src/tools/workflow/stem-separate.def.ts";
 
 export type CallLiveApiFunction = (
   tool: string,
@@ -53,6 +54,7 @@ const STANDARD_TOOL_DEFS: ToolDefFunction[] = [
   toolDefDuplicate,
   toolDefSelect,
   toolDefPlayback,
+  toolDefStemSeparate,
 ];
 
 /** All standard tool names (frozen). Does not include dev-only tools like ppal-raw-live-api. */

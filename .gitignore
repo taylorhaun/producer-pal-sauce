@@ -42,3 +42,10 @@ report/
 
 # Live project backups
 **/live-sets/**/Backup
+
+# Demucs Python virtual environment
+.demucs-venv
+
+# Personal Claude Code config (not for upstream PRs)
+CLAUDE.md
+.claude/
