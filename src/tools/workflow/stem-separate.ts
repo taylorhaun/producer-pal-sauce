@@ -95,13 +95,36 @@ function execAsync(
 }
 
 async function findDemucs(): Promise<string | null> {
+  // Check PATH first
   try {
     const { stdout } = await execAsync("which", ["demucs"], { timeout: 5000 });
 
     return stdout.trim();
   } catch {
-    return null;
+    // Not on PATH, check common locations
   }
+
+  const home = process.env.HOME ?? "";
+  const candidates = [
+    // pipx install location
+    path.join(home, ".local/bin/demucs"),
+    // Homebrew Python user scripts
+    path.join(home, "Library/Python/3.14/bin/demucs"),
+    path.join(home, "Library/Python/3.13/bin/demucs"),
+    path.join(home, "Library/Python/3.12/bin/demucs"),
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      await access(candidate);
+
+      return candidate;
+    } catch {
+      // Not found, try next
+    }
+  }
+
+  return null;
 }
 
 async function readStemFiles(

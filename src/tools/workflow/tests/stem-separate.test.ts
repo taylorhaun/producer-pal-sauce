@@ -78,7 +78,9 @@ describe("stemSeparate", () => {
   });
 
   it("returns error when demucs is not installed", async () => {
+    // First access call succeeds (audio file check), rest reject (candidate paths)
     mockAccess.mockResolvedValueOnce(undefined);
+    mockAccess.mockRejectedValue(new Error("ENOENT"));
     mockExecFileError("not found");
 
     const result = await stemSeparate({ audioFile: "/path/to/song.mp3" });
