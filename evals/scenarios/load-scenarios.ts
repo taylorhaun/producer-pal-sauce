@@ -11,6 +11,7 @@ import {
   createAndEditClip,
   duplicate,
   memoryWorkflow,
+  sampleSessionBuilder,
   trackAndDeviceWorkflow,
 } from "./defs/index.ts";
 import { type EvalScenario } from "./types.ts";
@@ -24,6 +25,7 @@ const allScenarios: EvalScenario[] = [
   trackAndDeviceWorkflow,
   memoryWorkflow,
   duplicate,
+  sampleSessionBuilder,
 ];
 
 export interface LoadScenariosOptions {
