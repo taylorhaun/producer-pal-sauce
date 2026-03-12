@@ -72,7 +72,11 @@ export function assertFolderSizeLimit(
 ): void {
   if (!fs.existsSync(dirPath)) return;
 
-  const oversized = findOversizedFolders(dirPath, ["node_modules"], maxItems);
+  const oversized = findOversizedFolders(
+    dirPath,
+    ["node_modules", "sample_bag"],
+    maxItems,
+  );
 
   if (oversized.length > 0) {
     const details = oversized
